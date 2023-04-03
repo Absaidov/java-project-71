@@ -18,16 +18,18 @@ public class App implements Runnable {
         // The business logic of the command goes here...
         // In this case, code for generation of ASCII art graphics
         // (omitted for the sake of brevity).
-        helloWorld();
+//        helloWorld();
+//        return "Hello World!";
+        System.out.println("Hello World!");
     }
 
     public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
-    public static String helloWorld(){
-        return "Hello World!";
-    }
+//    public static String helloWorld(){
+//        return "Hello World!";
+//    }
 }
 
 //    public static void main(String[] args) {
