@@ -5,6 +5,8 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
+import java.io.File;
+
 //public class App {
 //    @Option(names = "-h", description = "Usage: gendiff [-hV]\n" +
 //            "Compares two configuration files and shows a difference.\n" +
@@ -13,6 +15,12 @@ import picocli.CommandLine.Parameters;
 //    boolean create;
 @Command(name = "gendiff", version = "gendiff 1.0", mixinStandardHelpOptions = true, description = "Compares two configuration files and shows a difference.")
 public class App implements Runnable {
+    @Parameters(index = "0", description = "path to first file.")
+    private File filepath1;
+    @Parameters(index = "1", description = "path to second file.")
+    private File filepath2;
+    @Option(names = { "-f", "--format" }, description = "output format [default: stylish]")
+    String format;
     @Override
     public void run() {
         // The business logic of the command goes here...
