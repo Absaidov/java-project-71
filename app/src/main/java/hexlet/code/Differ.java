@@ -42,16 +42,41 @@ public class Differ {
 //        System.out.println(mapFile1.entrySet());
         for (Map.Entry<String, Object> mapFile1s : mapFile1.entrySet()) {
             for (Map.Entry<String, Object> mapFile2s : mapFile2.entrySet()){
-                if (mapFile1s.getKey().equals(mapFile2s.getKey())&& mapFile1s.getValue().equals(mapFile2s.getValue())){
-                    System.out.println(mapFile3.put(mapFile1s.getKey(), mapFile1s.getValue()));
-                    System.out.println(mapFile3);
+                if (mapFile1s.getKey().equals(mapFile2s.getKey()) && mapFile1s.getValue().equals(mapFile2s.getValue())){
+                    mapFile3.put(mapFile1s.getKey(), mapFile1s.getValue());
                 }
+
+                if(mapFile1s.getKey().equals(mapFile2s.getKey()) && !(mapFile1s.getValue().equals(mapFile2s.getValue()))){
+                    System.out.println("- " + mapFile1s.getKey() + ":" + " " +  mapFile1s.getValue());
+                }
+
+//                if(mapFile1s.getKey().equals(mapFile2s.getKey()) && !(mapFile1s.getValue().equals(mapFile2s.getValue()))){
+//                    mapFile3.put(mapFile1s.getKey(), mapFile1s.getValue());
+////                    mapFile3.put(mapFile2s.getKey(), mapFile2s.getValue());
+////                    System.out.println(mapFile2s.getKey());
+////                    System.out.println(mapFile2s.getValue());
+////                    System.out.println(mapFile1s.getKey());
+////                    System.out.println(mapFile1s.getKey());
+////                    System.out.println(mapFile1s.getValue());
+//                }
+//                if(mapFile1s.getKey().equals(mapFile2s.getKey()) && !(mapFile1s.getValue().equals(mapFile2s.getValue()))){
+////                    mapFile3.put(mapFile1s.getKey(), mapFile1s.getValue());
+//                    mapFile3.put(mapFile2s.getKey(), mapFile2s.getValue());
+////                    System.out.println(mapFile2s.getKey());
+////                    System.out.println(mapFile2s.getValue());
+////                    System.out.println(mapFile1s.getKey());
+////                    System.out.println(mapFile1s.getKey());
+////                    System.out.println(mapFile1s.getValue());
+//                }
             }
+
 //            System.out.println(
 //                    "My key is = " + mapFile1s.getKey() + " my value is = " + mapFile1s.getValue()
 
 
         }
+        System.out.println(mapFile3);
+
 //    public static Map getData(String content) throws Exception {
 //        return parse(content);
 //    }
