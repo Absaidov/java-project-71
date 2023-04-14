@@ -72,10 +72,15 @@ public class Differ {
                 }
                 }
             }
-        String map3ToJsonToString = objectMapper.writeValueAsString(mapFile3).replaceAll("\"", "");
-        map3ToJsonToString.replaceAll(",",",\n");
+        String map3ToJsonToString = objectMapper.writeValueAsString(mapFile3)
+                .replaceAll("\"", "")
+                .replaceAll(",", ",\n")
+                .replaceAll("ho", "  ho");
+        String result = "{\n" + map3ToJsonToString.substring(1);
+        String result2 =  result.replace("}", "\n}");
+//        map3ToJsonToString.replaceAll(",",",\n");
 //                System.out.println(jsonString);
-        return map3ToJsonToString;
+        return result2;
         }
     }
 
