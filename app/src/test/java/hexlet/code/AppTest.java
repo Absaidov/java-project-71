@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import java.io.File;
 @Command(name = "gendiff", version = "gendiff 1.0", mixinStandardHelpOptions = true,
