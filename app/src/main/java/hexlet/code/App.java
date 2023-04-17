@@ -7,7 +7,8 @@ import picocli.CommandLine.Parameters;
 
 import java.io.File;
 
-@Command(name = "gendiff", version = "gendiff 1.0", mixinStandardHelpOptions = true, description = "Compares two configuration files and shows a difference.")
+@Command(name = "gendiff", version = "gendiff 1.0", mixinStandardHelpOptions = true,
+        description = "Compares two configuration files and shows a difference.")
 public class App implements Runnable {
     @Parameters(index = "0", description = "path to first file.")
     private File filepath1;

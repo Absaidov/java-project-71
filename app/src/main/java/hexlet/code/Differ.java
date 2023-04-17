@@ -64,23 +64,21 @@ public class Differ {
                 var mapFiles1Value = mapFile1s.getValue();
 
                 if (!mapFiles2Key.equals(mapFiles1Key) && !mapFiles2Value.equals(mapFiles1Value)) {
-                    if (mapFiles2Key.equals("host")){
+                    if (mapFiles2Key.equals("host")) {
                         continue;
                     }
                     mapFile3.put("+ " + mapFile2s.getKey(), mapFile2s.getValue());
                     break;
                 }
-                }
             }
+        }
         String map3ToJsonToString = objectMapper.writeValueAsString(mapFile3)
                 .replaceAll("\"", "")
                 .replaceAll(",", ",\n")
                 .replaceAll("ho", "  ho");
         String result = "{\n" + map3ToJsonToString.substring(1);
         String result2 =  result.replace("}", "\n}");
-//        map3ToJsonToString.replaceAll(",",",\n");
-//                System.out.println(jsonString);
         return result2;
-        }
     }
+}
 

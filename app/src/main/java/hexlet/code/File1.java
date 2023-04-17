@@ -4,7 +4,7 @@ public class File1 {
     private static String key;
     private Object value;
 
-    public static String getKey(){
+    public static String getKey() {
         return key;
     }
 }
