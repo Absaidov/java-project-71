@@ -4,3 +4,29 @@
 <a href="https://codeclimate.com/github/Absaidov/java-project-71/progress/maintainability"><img src="https://api.codeclimate.com/v1/badges/21aa3301ec3cce033444/maintainability" /></a>
 ### Step 5 of project 2 
 https://asciinema.org/a/577518
+
+## Start
+
+```sh
+make
+```
+
+## Setup
+```sh
+make build
+```
+
+## Run
+```sh
+make run
+```
+
+## Run tests
+```sh
+make test
+```
+
+## Run checkstyle
+```sh
+make lint
+```

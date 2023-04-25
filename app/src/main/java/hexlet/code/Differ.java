@@ -2,6 +2,7 @@ package hexlet.code;
 
 import java.io.File;
 
+//import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Differ {
     public static String generate(File file1, File file2) throws Exception {
+
         Path path = Paths.get(file1.toURI()).toAbsolutePath().normalize();
         Path path2 = Paths.get(file2.toURI()).toAbsolutePath().normalize();
 
@@ -27,6 +29,8 @@ public class Differ {
         String content2 = Files.readString(path2);
 
         ObjectMapper objectMapper = new ObjectMapper();
+
+
         Map<String, Object> mapFile3 = new LinkedHashMap<>();
 
         Map<String, Object> mapFile1 = objectMapper.readValue(content,
@@ -77,8 +81,7 @@ public class Differ {
                 .replaceAll(",", ",\n")
                 .replaceAll("ho", "  ho");
         String result = "{\n" + map3ToJsonToString.substring(1);
-        String result2 =  result.replace("}", "\n}");
-        return result2;
+        return result.replace("}", "\n}");
     }
 }
 
