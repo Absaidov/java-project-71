@@ -21,3 +21,5 @@ jobs:
           arguments: build
           build-root-directory: app
       - run: make build
+      env:
+          CODE_CLIMATE_TOKEN: ${{ secrets.CODE_CLIMATE_TOKEN }}
