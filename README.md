@@ -2,9 +2,16 @@
 [![Actions Status](https://github.com/Absaidov/java-project-71/workflows/hexlet-check/badge.svg)](https://github.com/Absaidov/java-project-71/actions)
 ### badge of my project (CODE CLIMATE)
 <a href="https://codeclimate.com/github/Absaidov/java-project-71/progress/maintainability"><img src="https://api.codeclimate.com/v1/badges/21aa3301ec3cce033444/maintainability" /></a>
-### Step 5 of project 2 
-https://asciinema.org/a/577518
 
+### badge of my project (CODE CLIMATE_COVER_TEST)
+<a href="https://codeclimate.com/github/Absaidov/java-project-71/test_coverage"><img src="https://api.codeclimate.com/v1/badges/5a26d8cd65b2202dfa83/test_coverage" /></a>
+
+### Step 5 of project 2 
+
+[//]: # (https://asciinema.org/a/577518)
+[![asciicast](https://asciinema.org/a/577518.svg)](https://asciinema.org/a/577518)
+
+<script async id="asciicast-577518" src="https://asciinema.org/a/577518.js"></script>
 ## Start
 
 ```sh
