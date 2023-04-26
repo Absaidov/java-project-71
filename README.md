@@ -11,7 +11,6 @@
 [//]: # (https://asciinema.org/a/577518)
 [![asciicast](https://asciinema.org/a/577518.svg)](https://asciinema.org/a/577518)
 
-<script async id="asciicast-577518" src="https://asciinema.org/a/577518.js"></script>
 ## Start
 
 ```sh
