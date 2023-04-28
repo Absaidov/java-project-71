@@ -14,35 +14,26 @@ import java.util.TreeMap;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import static hexlet.code.Parser.mapFile1;
+import static hexlet.code.Parser.mapFile2;
+
+//import static hexlet.code.Parser.parsin;
+
+
 
 public class Differ {
+    public static ObjectMapper objectMapper = new ObjectMapper();
+    public static ObjectMapper YAMLmapper = new YAMLMapper();
     public static String generate(File file1, File file2) throws Exception {
-
-        Path path = Paths.get(file1.toURI()).toAbsolutePath().normalize();
-        Path path2 = Paths.get(file2.toURI()).toAbsolutePath().normalize();
-
-        if (!Files.exists(path)) {
-            throw new Exception("File '" + path + "' does not exist");
-        }
-
-        String content = Files.readString(path);
-        String content2 = Files.readString(path2);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
+//        parsin(file1,file2);
 
         Map<String, Object> mapFile3 = new LinkedHashMap<>();
 
-        Map<String, Object> mapFile1 = objectMapper.readValue(content,
-                new TypeReference<TreeMap<String, Object>>() {
-                });
-
-        Map<String, Object> mapFile2 = objectMapper.readValue(content2,
-                new TypeReference<TreeMap<String, Object>>() {
-                });
-
-        for (Map.Entry<String, Object> mapFile1s : mapFile1.entrySet()) {
-            for (Map.Entry<String, Object> mapFile2s : mapFile2.entrySet()) {
+        for (Map.Entry<String, Object> mapFile1s : mapFile1(file1).entrySet()) {
+            for (Map.Entry<String, Object> mapFile2s : mapFile2(file2).entrySet()) {
                 var mapFiles2Key = mapFile2s.getKey();
                 var mapFiles2Value = mapFile2s.getValue();
                 var mapFiles1Key = mapFile1s.getKey();
@@ -59,8 +50,8 @@ public class Differ {
             }
         }
 
-        for (Map.Entry<String, Object> mapFile2s : mapFile2.entrySet()) {
-            for (Map.Entry<String, Object> mapFile1s : mapFile1.entrySet()) {
+        for (Map.Entry<String, Object> mapFile2s : mapFile2(file2).entrySet()) {
+            for (Map.Entry<String, Object> mapFile1s : mapFile1(file1).entrySet()) {
 
                 var mapFiles2Key = mapFile2s.getKey();
                 var mapFiles2Value = mapFile2s.getValue();
@@ -82,6 +73,7 @@ public class Differ {
                 .replaceAll("ho", "  ho");
         String result = "{\n" + map3ToJsonToString.substring(1);
         return result.replace("}", "\n}");
+//        return null;
     }
 }
 
