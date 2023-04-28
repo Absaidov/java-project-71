@@ -5,18 +5,23 @@ import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-import static hexlet.code.Parser.mapFile1;
-import static hexlet.code.Parser.mapFile2;
+//import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+
+import static hexlet.code.Parser.mapFileParse1;
+import static hexlet.code.Parser.mapFileParse2;
+
 
 public class Differ {
     public static ObjectMapper objectMapper = new ObjectMapper();
-    public static ObjectMapper YAMLmapper = new YAMLMapper();
+//    public static ObjectMapper YAMLmapper = new YAMLMapper();
     public static String generate(File file1, File file2) throws Exception {
+        Map<String, Object> parsinFile1 = mapFileParse1(file1);
+        Map<String, Object> parsinFile2 = mapFileParse2(file2);
         Map<String, Object> mapFile3 = new LinkedHashMap<>();
 
-        for (Map.Entry<String, Object> mapFile1s : mapFile1(file1).entrySet()) {
-            for (Map.Entry<String, Object> mapFile2s : mapFile2(file2).entrySet()) {
+        for (Map.Entry<String, Object> mapFile1s : parsinFile1.entrySet()) {
+            for (Map.Entry<String, Object> mapFile2s : parsinFile2.entrySet()) {
+
                 var mapFiles2Key = mapFile2s.getKey();
                 var mapFiles2Value = mapFile2s.getValue();
                 var mapFiles1Key = mapFile1s.getKey();
@@ -33,8 +38,8 @@ public class Differ {
             }
         }
 
-        for (Map.Entry<String, Object> mapFile2s : mapFile2(file2).entrySet()) {
-            for (Map.Entry<String, Object> mapFile1s : mapFile1(file1).entrySet()) {
+        for (Map.Entry<String, Object> mapFile2s : parsinFile2.entrySet()) {
+            for (Map.Entry<String, Object> mapFile1s : parsinFile1.entrySet()) {
 
                 var mapFiles2Key = mapFile2s.getKey();
                 var mapFiles2Value = mapFile2s.getValue();
@@ -50,13 +55,13 @@ public class Differ {
                 }
             }
         }
-        String map3ToJsonToString = objectMapper.writeValueAsString(mapFile3)
+        String map3ToJsonToString = objectMapper
+                .writeValueAsString(mapFile3)
                 .replaceAll("\"", "")
                 .replaceAll(",", ",\n")
                 .replaceAll("ho", "  ho");
         String result = "{\n" + map3ToJsonToString.substring(1);
         return result.replace("}", "\n}");
-//        return null;
     }
 }
 
