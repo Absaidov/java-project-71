@@ -2,34 +2,17 @@ package hexlet.code;
 
 import java.io.File;
 
-//import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
-
-
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import static hexlet.code.Parser.mapFile1;
 import static hexlet.code.Parser.mapFile2;
-
-//import static hexlet.code.Parser.parsin;
-
-
 
 public class Differ {
     public static ObjectMapper objectMapper = new ObjectMapper();
     public static ObjectMapper YAMLmapper = new YAMLMapper();
     public static String generate(File file1, File file2) throws Exception {
-//        parsin(file1,file2);
-
         Map<String, Object> mapFile3 = new LinkedHashMap<>();
 
         for (Map.Entry<String, Object> mapFile1s : mapFile1(file1).entrySet()) {
