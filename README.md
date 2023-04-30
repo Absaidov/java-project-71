@@ -11,6 +11,9 @@
 [//]: # (https://asciinema.org/a/577518)
 [![asciicast](https://asciinema.org/a/577518.svg)](https://asciinema.org/a/577518)
 
+### Step 7 of project 2 
+[![asciicast](https://asciinema.org/a/581588.svg)](https://asciinema.org/a/581588)
+
 ## Start
 
 ```sh
