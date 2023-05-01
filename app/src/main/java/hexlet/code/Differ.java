@@ -15,6 +15,7 @@ public class Differ {
     public static ObjectMapper objectMapper = new ObjectMapper();
 //    public static ObjectMapper YAMLmapper = new YAMLMapper();
     public static String generate(File file1, File file2) throws Exception {
+
         Map<String, Object> parsinFile1 = mapFileParse1(file1);
         Map<String, Object> parsinFile2 = mapFileParse2(file2);
         Map<String, Object> mapFile3 = new LinkedHashMap<>();
@@ -28,11 +29,11 @@ public class Differ {
                 var mapFiles1Value = mapFile1s.getValue();
 
                 if (!mapFiles1Key.equals(mapFiles2Key) && !mapFiles1Value.equals(mapFiles2Value)) {
-                    mapFile3.put("- " + mapFile1s.getKey(), mapFile1s.getValue());
+                    mapFile3.put("- " + mapFiles1Key, mapFiles1Value);
                     break;
                 }
                 if (mapFiles1Key.contains(mapFiles2Key) && mapFiles1Value.equals(mapFiles2Value)) {
-                    mapFile3.put(mapFile1s.getKey(), mapFile1s.getValue());
+                    mapFile3.put(mapFiles1Key, mapFiles1Value);
                     break;
                 }
             }
@@ -40,7 +41,6 @@ public class Differ {
 
         for (Map.Entry<String, Object> mapFile2s : parsinFile2.entrySet()) {
             for (Map.Entry<String, Object> mapFile1s : parsinFile1.entrySet()) {
-
                 var mapFiles2Key = mapFile2s.getKey();
                 var mapFiles2Value = mapFile2s.getValue();
                 var mapFiles1Key = mapFile1s.getKey();
@@ -50,7 +50,9 @@ public class Differ {
                     if (mapFiles2Key.equals("host")) {
                         continue;
                     }
-                    mapFile3.put("+ " + mapFile2s.getKey(), mapFile2s.getValue());
+//                    System.out.println(mapFiles2Value);
+
+                    mapFile3.put("+ " + mapFiles2Key, mapFiles2Value);
                     break;
                 }
             }

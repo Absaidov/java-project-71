@@ -29,21 +29,17 @@ public class Parser {
 
         Path path = Paths.get(file1.toURI()).toAbsolutePath().normalize();
         String content = Files.readString(path);
-        if (path.endsWith("filepath1.json")) {
+//        if (path.endsWith("filepath1.json")) {
             mapFile1 = OBJECT_MAPPER.readValue(content,
                     new TypeReference<TreeMap<String, Object>>() {
                     });
-        }
-//        System.out.println(path.endsWith(".yml"));
-//        System.out.println(path.endsWith(".json"));
-//        System.out.println(path.endsWith("filepath1.yml"));
+//        }
 
-
-        if (path.endsWith("filepath1.yml")) {
-            mapFile1 = YAML_MAPPER.readValue(content,
-                    new TypeReference<TreeMap<String, Object>>() {
-                    });
-        }
+//        if (path.endsWith("filepath1.yml")) {
+//            mapFile1 = YAML_MAPPER.readValue(content,
+//                    new TypeReference<TreeMap<String, Object>>() {
+//                    });
+//        }
 
         return mapFile1;
     }
@@ -51,16 +47,16 @@ public class Parser {
 
         Path path2 = Paths.get(file2.toURI()).toAbsolutePath().normalize();
         String content2 = Files.readString(path2);
-        if (path2.endsWith("filepath2.json")) {
+//        if (path2.endsWith("filepath2.json")) {
             mapFile2 = OBJECT_MAPPER.readValue(content2,
                     new TypeReference<TreeMap<String, Object>>() {
                     });
-        }
-        if (path2.endsWith("filepath2.yml")) {
-            mapFile2 = YAML_MAPPER.readValue(content2,
-                    new TypeReference<TreeMap<String, Object>>() {
-                    });
-        }
+//        }
+//        if (path2.endsWith("filepath2.yml")) {
+//            mapFile2 = YAML_MAPPER.readValue(content2,
+//                    new TypeReference<TreeMap<String, Object>>() {
+//                    });
+//        }
         return mapFile2;
     }
 }

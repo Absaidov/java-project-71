@@ -2,6 +2,8 @@ package hexlet.code;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.assertj.core.api.Assertions
+
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -22,7 +24,8 @@ public class AppTest {
                     + verbose:true
                     }""";
         assertEquals(expected, actual);
-
-
     }
+//    @Test void appTest2() throws Exception {
+//        assertThat
+//    }
 }
