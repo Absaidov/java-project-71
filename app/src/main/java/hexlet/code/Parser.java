@@ -28,6 +28,7 @@ public class Parser {
     public static Map<String, Object> mapFileParse1(File file1) throws IOException {
 
         Path path = Paths.get(file1.toURI()).toAbsolutePath().normalize();
+
         String content = Files.readString(path);
 //        if (path.endsWith("filepath1.json")) {
             mapFile1 = OBJECT_MAPPER.readValue(content,
