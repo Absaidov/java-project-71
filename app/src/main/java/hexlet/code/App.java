@@ -16,12 +16,12 @@ public class App implements Runnable {
     private File filepath1;
     @Parameters(index = "1", description = "path to second file.")
     private File filepath2;
-    @Option(names = { "-f", "--format" }, description = "output format [default: stylish]")
+    @Option(names = { "-f", "--format" }, description = "output format [default: stylish]", defaultValue = "stylish")
     String format;
     @Override
     public void run() {
         try {
-            System.out.println(generate(filepath1, filepath2));
+            generate(filepath1, filepath2, format);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
