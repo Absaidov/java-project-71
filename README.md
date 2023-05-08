@@ -14,6 +14,9 @@
 ### Step 7 of project 2 
 [![asciicast](https://asciinema.org/a/581588.svg)](https://asciinema.org/a/581588)
 
+### Step 8 of project 2
+[![asciicast](https://asciinema.org/a/583536.svg)](https://asciinema.org/a/583536)
+
 ## Start
 
 ```sh

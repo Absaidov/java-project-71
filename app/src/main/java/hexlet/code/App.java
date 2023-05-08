@@ -21,7 +21,7 @@ public class App implements Runnable {
     @Override
     public void run() {
         try {
-            generate(filepath1, filepath2, format);
+            System.out.println(generate(filepath1, filepath2, format));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
