@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static hexlet.code.Differ.generate;
 //import static jdk.internal.jshell.tool.Startup.readFile;
+import static hexlet.code.Difference.genDiff;
+import static hexlet.code.Formatter.choiceFormat;
 import static hexlet.code.Parser.mapFileParse1;
 import static hexlet.code.Parser.mapFileParse2;
 //import static org.apache.commons.lang3.StringUtils.substring;
@@ -232,6 +234,46 @@ public class AppTest {
         String format = "plain";
         String actual = generate(filepath4.toFile(), filepath5.toFile(), format);
         String expected = Files.readString(filepath11);
+        assertEquals(expected, actual);
+    }
+    @Test void appTestFormatterPlainJSONArray() throws Exception {
+        String format = "plain";
+        Map<Object, String> mapFile3;
+        Map<String, Object> parsinFile1 = mapFileParse1(filepath4.toFile());
+        Map<String, Object> parsinFile2 = mapFileParse2(filepath5.toFile());
+        mapFile3 = genDiff(parsinFile1, parsinFile2);
+        String actual = choiceFormat(mapFile3, format);
+        String expected = Files.readString(filepath11);
+        assertEquals(expected, actual);
+    }
+    @Test void appTestFormatterPlainYAMLArray() throws Exception {
+        String format = "plain";
+        Map<Object, String> mapFile3;
+        Map<String, Object> parsinFile1 = mapFileParse1(filepath9.toFile());
+        Map<String, Object> parsinFile2 = mapFileParse2(filepath10.toFile());
+        mapFile3 = genDiff(parsinFile1, parsinFile2);
+        String actual = choiceFormat(mapFile3, format);
+        String expected = Files.readString(filepath11);
+        assertEquals(expected, actual);
+    }
+    @Test void appTestFormatterStylishJSONArray() throws Exception {
+        String format = "stylish";
+        Map<Object, String> mapFile3;
+        Map<String, Object> parsinFile1 = mapFileParse1(filepath4.toFile());
+        Map<String, Object> parsinFile2 = mapFileParse2(filepath5.toFile());
+        mapFile3 = genDiff(parsinFile1, parsinFile2);
+        String actual = choiceFormat(mapFile3, format);
+        String expected = Files.readString(getFilepath3);
+        assertEquals(expected, actual);
+    }
+    @Test void appTestFormatterStylishYAMLArray() throws Exception {
+        String format = "stylish";
+        Map<Object, String> mapFile3;
+        Map<String, Object> parsinFile1 = mapFileParse1(filepath9.toFile());
+        Map<String, Object> parsinFile2 = mapFileParse2(filepath10.toFile());
+        mapFile3 = genDiff(parsinFile1, parsinFile2);
+        String actual = choiceFormat(mapFile3, format);
+        String expected = Files.readString(getFilepath3);
         assertEquals(expected, actual);
     }
 //    @Test void appTestParserJsonArray() throws Exception {
