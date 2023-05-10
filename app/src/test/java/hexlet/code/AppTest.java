@@ -33,6 +33,7 @@ public class AppTest {
     Path filepath8  = Paths.get("src/test/resources/filepath2.yml");
     Path filepath9  = Paths.get("src/test/resources/file1yml.yml");
     Path filepath10  = Paths.get("src/test/resources/file2yml.yml");
+    Path filepath11  = Paths.get("src/test/resources/resultPlainFormat.txt");
 
 
     @Test void appTestJSON() throws Exception {
@@ -226,6 +227,12 @@ public class AppTest {
         assertEquals(keyValue22, actual.substring(409, 424));
         assertEquals(keyValue23, actual.substring(425, 440));
 
+    }
+    @Test void appTestPlainFormat() throws Exception {
+        String format = "plain";
+        String actual = generate(filepath4.toFile(), filepath5.toFile(), format);
+        String expected = Files.readString(filepath11);
+        assertEquals(expected, actual);
     }
 //    @Test void appTestParserJsonArray() throws Exception {
 //        Map<String, Object> parsinFile1Actual = mapFileParse1(filepath4.toFile());

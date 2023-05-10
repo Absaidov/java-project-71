@@ -8,7 +8,8 @@ import java.util.Map;
 
 
 import static hexlet.code.Difference.genDiff;
-import static hexlet.code.Format.stylish;
+//import static hexlet.code.Format.stylish;
+import static hexlet.code.Formatter.choiceFormat;
 import static hexlet.code.Parser.mapFileParse1;
 import static hexlet.code.Parser.mapFileParse2;
 
@@ -23,10 +24,8 @@ public class Differ {
         Map<Object, String> mapFile3;
 
         mapFile3 = genDiff(parsinFile1, parsinFile2);
-        if (format.equals("stylish")) {
-            return stylish(mapFile3);
-        }
-        return "where is STYLISH?";
+
+        return choiceFormat(mapFile3, format);
     }
 }
 
