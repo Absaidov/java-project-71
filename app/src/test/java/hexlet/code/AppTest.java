@@ -256,7 +256,7 @@ public class AppTest {
         String expected = Files.readString(filepath11);
         assertEquals(expected, actual);
     }
-    @Test void appTestFormatterStylishJSONArray() throws Exception {
+    @Test void appTestFormatterStylisHJSONArray() throws Exception {
         String format = "stylish";
         Map<Object, String> mapFile3;
         Map<String, Object> parsinFile1 = mapFileParse1(filepath4.toFile());
