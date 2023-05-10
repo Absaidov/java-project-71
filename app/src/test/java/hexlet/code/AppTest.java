@@ -286,6 +286,13 @@ public class AppTest {
 //        String expected = Files.readString(getFilepath3);
         assertEquals("SOMETHING GOES WRONG", actual);
     }
+    @Test void appTestVoidRun() throws Exception {
+        String format = "stylish";
+
+        String actual = generate(filepath4.toFile(), filepath5.toFile(), format);
+        String expected = Files.readString(getFilepath3);
+        assertEquals(expected, actual);
+    }
 //    @Test void appTestParserJsonArray() throws Exception {
 //        Map<String, Object> parsinFile1Actual = mapFileParse1(filepath4.toFile());
 //        Map<String, Object> parsinFile2Actual = mapFileParse2(filepath5.toFile());
