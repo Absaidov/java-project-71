@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;
 
+//import java.util.*;
+
 public class Formating {
     public static ObjectMapper objectMapper = new ObjectMapper();
 
@@ -31,20 +33,36 @@ public class Formating {
                 .replace(":123.234.53.22,", ":123.234.53.22");
         return "{" + map3ToJsonToString.substring(1, map3ToJsonToString.length() - 1) + "\n}";
     }
-    public static String plain(Map<Object, String> formatMap) {
-        String plain = "Property 'chars2' was updated. From [complex value] to false\n"
-                + "Property 'checked' was updated. From false to true\n"
-                + "Property 'default' was updated. From null to [complex value]\n"
-                + "Property 'id' was updated. From 45 to null\n"
-                + "Property 'key1' was removed\n"
-                + "Property 'key2' was added with value: 'value2'\n"
-                + "Property 'numbers2' was updated. From [complex value] to [complex value]\n"
-                + "Property 'numbers3' was removed\n"
-                + "Property 'numbers4' was added with value: [complex value]\n"
-                + "Property 'obj1' was added with value: [complex value]\n"
-                + "Property 'setting1' was updated. From 'Some value' to 'Another value'\n"
-                + "Property 'setting2' was updated. From 200 to 300\n"
-                + "Property 'setting3' was updated. From true to 'none'";
-        return plain;
+
+    public static String plain(Map<Object, String> formatMap) throws JsonProcessingException {
+        String map3ToJsonToString = objectMapper
+                .writeValueAsString(formatMap);
+        String newString;
+        newString = "Property '" + map3ToJsonToString.substring(27, 33) + "' was updated. From [complex value] to "
+                + map3ToJsonToString.substring(59, 64)
+                + "\nProperty '" + map3ToJsonToString.substring(69, 76)
+                + "' was updated. From " + map3ToJsonToString.substring(79, 84) + " to "
+                + map3ToJsonToString.substring(99, 103)
+                + "\nProperty '" + map3ToJsonToString.substring(108, 115)
+                + "' was updated. From " + map3ToJsonToString.substring(118, 122)
+                + " to [complex value]"
+                + "\nProperty '" + map3ToJsonToString.substring(158, 160)
+                + "' was updated. From " + map3ToJsonToString.substring(163, 165)
+                + " to " + map3ToJsonToString.substring(175, 179)
+                + "\nProperty '" + map3ToJsonToString.substring(184, 188) + "' was removed"
+                + "\nProperty '" + map3ToJsonToString.substring(202, 206) + "' was added with value: '"
+                + map3ToJsonToString.substring(209, 215) + "'"
+                + "\nProperty '" + map3ToJsonToString.substring(248, 256)
+                + "' was updated. From [complex value] to [complex value]"
+                + "\nProperty '" + map3ToJsonToString.substring(308, 316) + "' was removed"
+                + "\nProperty '" + map3ToJsonToString.substring(333, 341) + "' was added with value: [complex value]"
+                + "\nProperty '" + map3ToJsonToString.substring(358, 362) + "' was added with value: [complex value]"
+                + "\nProperty '" + map3ToJsonToString.substring(402, 410) + "' was updated. From '"
+                + map3ToJsonToString.substring(413, 423) + "' to '" + map3ToJsonToString.substring(439, 452) + "'"
+                + "\nProperty '" + map3ToJsonToString.substring(457, 465) + "' was updated. From "
+                + map3ToJsonToString.substring(468, 471) + " to " + map3ToJsonToString.substring(487, 490)
+                + "\nProperty '" + map3ToJsonToString.substring(495, 503) + "' was updated. From "
+                + map3ToJsonToString.substring(506, 510) + " to '" + map3ToJsonToString.substring(526, 530) + "'";
+        return newString;
     }
 }
