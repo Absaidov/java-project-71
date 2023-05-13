@@ -20,6 +20,9 @@
 ### Step 9 of project 2
 [![asciicast](https://asciinema.org/a/584554.svg)](https://asciinema.org/a/584554)
 
+### Step 10 of project 2
+[![asciicast](https://asciinema.org/a/584658.svg)](https://asciinema.org/a/584658)
+
 ## Start
 
 ```sh

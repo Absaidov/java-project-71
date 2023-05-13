@@ -36,6 +36,8 @@ public class AppTest {
     Path filepath9  = Paths.get("src/test/resources/file1yml.yml");
     Path filepath10  = Paths.get("src/test/resources/file2yml.yml");
     Path filepath11  = Paths.get("src/test/resources/resultPlainFormat.txt");
+    Path filepath12  = Paths.get("src/test/resources/testingJSONStyle.txt");
+
 
 
     @Test void appTestJSON() throws Exception {
@@ -274,6 +276,16 @@ public class AppTest {
         mapFile3 = genDiff(parsinFile1, parsinFile2);
         String actual = choiceFormat(mapFile3, format);
         String expected = Files.readString(getFilepath3);
+        assertEquals(expected, actual);
+    }
+    @Test void appTestFormatterJsonStyleArray() throws Exception {
+        String format = "json";
+        Map<Object, String> mapFile3;
+        Map<String, Object> parsinFile1 = mapFileParse1(filepath9.toFile());
+        Map<String, Object> parsinFile2 = mapFileParse2(filepath10.toFile());
+        mapFile3 = genDiff(parsinFile1, parsinFile2);
+        String actual = choiceFormat(mapFile3, format);
+        String expected = Files.readString(filepath12);
         assertEquals(expected, actual);
     }
     @Test void appTestFormatterSomethingGoesWrong() throws Exception {

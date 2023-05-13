@@ -65,4 +65,11 @@ public class Formating {
                 + map3ToJsonToString.substring(506, 510) + " to '" + map3ToJsonToString.substring(526, 530) + "'";
         return newString;
     }
+    public static String json(Map<Object, String> formatMap) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String newString  = objectMapper.writeValueAsString(formatMap);
+//        newString.replace("{", "{\n");
+        return newString
+                .replace("  ", "");
+    }
 }
