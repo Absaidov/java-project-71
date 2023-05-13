@@ -1,24 +1,19 @@
 package hexlet.code;
 
 import org.junit.jupiter.api.Test;
-//import org.w3c.dom.ls.LSOutput;
 
 import static hexlet.code.Differ.generate;
-//import static jdk.internal.jshell.tool.Startup.readFile;
 import static hexlet.code.Difference.genDiff;
 import static hexlet.code.Formatter.choiceFormat;
 import static hexlet.code.Parser.mapFileParse1;
 import static hexlet.code.Parser.mapFileParse2;
-//import static org.apache.commons.lang3.StringUtils.substring;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-//import static org.assertj.core.api.Assertions
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-//import java.util.HashMap;
-//import java.util.LinkedHashMap;
+
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -42,6 +37,7 @@ public class AppTest {
 
     @Test void appTestJSON() throws Exception {
         String format = "stylish";
+//        System.out.println(filepath1.getClass());
         String actual = generate(filepath1.toFile(), filepath2.toFile(), format);
         String expected = Files.readString(getFilepath6);
         assertEquals(expected, actual);
@@ -295,56 +291,6 @@ public class AppTest {
         Map<String, Object> parsinFile2 = mapFileParse2(filepath5.toFile());
         mapFile3 = genDiff(parsinFile1, parsinFile2);
         String actual = choiceFormat(mapFile3, format);
-//        String expected = Files.readString(getFilepath3);
         assertEquals("SOMETHING GOES WRONG", actual);
     }
-//    @Test void appTestParserJsonArray() throws Exception {
-//        Map<String, Object> parsinFile1Actual = mapFileParse1(filepath4.toFile());
-//        Map<String, Object> parsinFile2Actual = mapFileParse2(filepath5.toFile());
-////        String nullEx = String.valueOf(null);
-////        {chars1=[a, b, c], chars2=[d, e, f], checked=false, default=null, id=45,
-// key1=value1, numbers1=[1, 2, 3, 4], numbers2=[2, 3, 4, 5], numbers3=[3, 4, 5],
-// setting1=Some value, setting2=200, setting3=true}
-////        {chars1=[a, b, c], chars2=false, checked=true, default=[value1, value2],
-// id=null, key2=value2, numbers1=[1, 2, 3, 4],
-// numbers2=[22, 33, 44, 55], numbers4=[4, 5, 6],
-// obj1={nestedKey=value, isNested=true}, setting1=Another value, setting2=300, setting3=none}
-////        Map<String, Object> parsinFile1Expected = new LinkedHashMap<>(
-////                Map.of("chars1", "[a, b, c]",
-// "chars2","[d, e, f]", "checked",false,"default",null,"id",45,"key1","value1"
-////                ,"numbers1","[1, 2, 3, 4]",
-// "numbers2","[2, 3, 4, 5]","numbers3","[3, 4, 5]","setting1","Some value"));
-//////        parsinFile1Expected.put("chars1", "[a, b, c]");
-//////        parsinFile1Expected.put("chars2", "[d, e, f]");
-//////        parsinFile1Expected.put("checked", false);
-//////        parsinFile1Expected.put("default", null);
-////////        parsinFile1Expected.put("id", 45);
-//////        parsinFile1Expected.put("id", 45);
-//////        parsinFile1Expected.put("key1", "value1");
-//////        parsinFile1Expected.put("numbers1", "[1, 2, 3, 4]");
-//////        parsinFile1Expected.put("numbers2", "[2, 3, 4, 5]");
-//////        parsinFile1Expected.put("numbers3", "[3, 4, 5]");
-//////        parsinFile1Expected.put("setting1", "Some value");
-//////        parsinFile1Expected.put("default", null);
-////        parsinFile1Expected.put("setting2",200);
-////        parsinFile1Expected.put("setting3",true);
-////        Map<String, Object> map1 = new TreeMap<>(parsinFile1Expected);
-//////        Map<String, Object> parsinFile2Expected = new TreeMap<>(Map.of("chars1","[a, b, c]", "chars2",false));
-////
-////        assertEquals(map1, parsinFile1Actual);
-//
-////        assertEquals(parsinFile2Expected, parsinFile2Actual);
-//    }
-////    @Test void appTestParserYAML() throws Exception {
-////        Map<String, Object> parsinFile1Actual = mapFileParse1(filepath1.toFile());
-////        Map<String, Object> parsinFile2Actual = mapFileParse2(filepath2.toFile());
-////        Map<String, Object> parsinFile1Expected = mapFileParse1(filepath1.toFile());
-////        Map<String, Object> parsinFile2Expeceted = mapFileParse1(filepath2.toFile());
-////        assertEquals(parsinFile1Expected, parsinFile1Actual);
-////        assertEquals(parsinFile2Expeceted, parsinFile2Actual);
-////    }
-//
-////    @Test void appTest2() throws Exception {
-////        assertThat
-////    }
 }

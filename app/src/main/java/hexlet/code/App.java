@@ -13,9 +13,9 @@ import static hexlet.code.Differ.generate;
         description = "Compares two configuration files and shows a difference.")
 public class App implements Runnable {
     @Parameters(index = "0", description = "path to first file.")
-    private File filepath1;
+    public File filepath1;
     @Parameters(index = "1", description = "path to second file.")
-    private File filepath2;
+    public File filepath2;
     @Option(names = { "-f", "--format" }, description = "output format [default: stylish]", defaultValue = "stylish")
     String format;
     @Override
