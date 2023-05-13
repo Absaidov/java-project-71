@@ -66,8 +66,8 @@ public class Formating {
         return newString;
     }
     public static String json(Map<Object, String> formatMap) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        String newString  = objectMapper.writeValueAsString(formatMap);
+        ObjectMapper jsonMapping = new ObjectMapper();
+        String newString  = jsonMapping.writeValueAsString(formatMap);
 //        newString.replace("{", "{\n");
         return newString
                 .replace("  ", "");
