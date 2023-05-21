@@ -1,31 +1,37 @@
 package hexlet.code;
 
-//import com.sun.source.tree.BreakTree;
-
-import java.io.File;
-
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
 
-
-import static hexlet.code.Difference.genDiff;
-//import static hexlet.code.Format.stylish;
-import static hexlet.code.Formatter.choiceFormat;
-import static hexlet.code.Parser.mapFileParse1;
-import static hexlet.code.Parser.mapFileParse2;
-
-
 public class Differ {
+    public static String generate(String pathfile1, String pathfile2, String format) throws Exception {
+        String data1 = getData2(pathfile1);
+        String data2 = getData2(pathfile2);
 
-    public static String generate(File file1, File file2, String format) throws Exception {
+        String fileType1 = getFType(pathfile1);
+        String fileType2 = getFType(pathfile2);
 
-        Map<String, Object> parsinFile1 = mapFileParse1(file1);
-        Map<String, Object> parsinFile2 = mapFileParse2(file2);
+        Map<String, Object> map1 = Parser.parser(data1, fileType1);
+        Map<String, Object> map2 = Parser.parser(data2, fileType2);
 
-        Map<Object, String> mapFile3;
+        List<Map<String, Object>> result = GenDifference.differ(map1, map2);
 
-        mapFile3 = genDiff(parsinFile1, parsinFile2);
-
-        return choiceFormat(mapFile3, format);
+        return Formatter.formatStyle(result, format);
     }
-}
+    public static String generate(String pathfile1, String pathfile2) throws Exception {
+        return generate(pathfile1, pathfile2, "stylish");
+    }
 
+    public static String getData2(String filepath) throws Exception {
+        Path path = Paths.get("src","test","resources", filepath);
+        return Files.readString(path);
+    }
+
+    public static String getFType(String filepath) {
+        return filepath.substring(filepath.indexOf(".") + 1);
+    }
+
+}

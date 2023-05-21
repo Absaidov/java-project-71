@@ -1,23 +1,21 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import hexlet.code.formatters.Json;
+import hexlet.code.formatters.Plain;
+import hexlet.code.formatters.Stylish;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
-import static hexlet.code.formatters.Formating.plain;
-import static hexlet.code.formatters.Formating.stylish;
-import static hexlet.code.formatters.Formating.json;
-
-
 public class Formatter {
-    public static String choiceFormat(Map<Object, String> formatMap, String format) throws JsonProcessingException {
-        if (format.equals("stylish")) {
-            return stylish(formatMap);
-        } else if (format.equals("plain")) {
-            return plain(formatMap);
-        } else if (format.equals("json")) {
-            return json(formatMap);
-        }
-        return "SOMETHING GOES WRONG";
+    public static String formatStyle(
+            List<Map<String, Object>> differences, String format) throws Exception {
+        return switch (format) {
+            case "stylish" -> Stylish.formatStylish(differences);
+            case "plain" -> Plain.formatPlain(differences);
+            case "json" -> Json.formatJson(differences);
+            default -> throw new Exception("This format is not available " + format);
+        };
     }
 }
