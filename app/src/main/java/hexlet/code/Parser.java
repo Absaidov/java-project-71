@@ -9,12 +9,12 @@ import java.util.TreeMap;
 
 
 public class Parser {
-        public static TreeMap<String, Object> parser(String data, String fileType) throws IOException {
-            ObjectMapper objectmapper = chooseFormat(fileType);
-            return objectmapper.readValue(data, new TypeReference<>() { });
-        }
+    public static TreeMap<String, Object> parser(String data, String fileType) throws IOException {
+        ObjectMapper objectmapper = chooseFormat(fileType);
+        return objectmapper.readValue(data, new TypeReference<>() { });
+    }
 
-        private static ObjectMapper chooseFormat(String fileType) {
-            return "json".equals(fileType) ? new ObjectMapper() : new ObjectMapper(new YAMLFactory());
-        }
+    private static ObjectMapper chooseFormat(String fileType) {
+        return "json".equals(fileType) ? new ObjectMapper() : new ObjectMapper(new YAMLFactory());
+    }
 }
