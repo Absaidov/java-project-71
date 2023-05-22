@@ -19,7 +19,7 @@ public class App implements Runnable {
             defaultValue = "stylish")
     private String format;
     @Override
-    public void run() {
+    public final void run() {
         try {
             System.out.println(generate(filepath1, filepath2, format));
         } catch (Exception e) {
