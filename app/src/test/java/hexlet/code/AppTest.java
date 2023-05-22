@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AppTest {
 
-    private final String path1 = "file1.json";
-    private final String path2 = "file2.json";
-    private final String path3 = "file1.yml";
-    private final String path4 = "file2.yml";
+    private final String path1 = "src/test/resources/fixtures/file1.json";
+    private final String path2 = "src/test/resources/fixtures/file2.json";
+    private final String path3 = "src/test/resources/fixtures/file1.yml";
+    private final String path4 = "src/test/resources/fixtures/file2.yml";
 
     private final Path pathStylish =
             Paths.get("src/test/resources/expected/testStylish").toAbsolutePath().normalize();

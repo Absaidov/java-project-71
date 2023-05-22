@@ -26,7 +26,7 @@ public class Differ {
     }
 
     public static String getData2(String filepath) throws Exception {
-        Path path = Paths.get("src", "test", "resources", "fixtures", filepath);
+        Path path = Paths.get(filepath.substring(filepath.indexOf("src")));
         return Files.readString(path);
     }
 
