@@ -8,14 +8,9 @@ import java.util.Map;
 
 public class Differ {
     public static String generate(String pathfile1, String pathfile2, String format) throws Exception {
-        String data1 = getData2(pathfile1);
-        String data2 = getData2(pathfile2);
+        Map<String, Object> map1 = getData(pathfile1);
+        Map<String, Object> map2 = getData(pathfile2);
 
-        String fileType1 = getFType(pathfile1);
-        String fileType2 = getFType(pathfile2);
-
-        Map<String, Object> map1 = Parser.parser(data1, fileType1);
-        Map<String, Object> map2 = Parser.parser(data2, fileType2);
 
         List<Map<String, Object>> result = GenDifference.differ(map1, map2);
 
@@ -25,13 +20,23 @@ public class Differ {
         return generate(pathfile1, pathfile2, "stylish");
     }
 
-    public static String getData2(String filepath) throws Exception {
-        Path path = Paths.get(filepath.substring(filepath.indexOf("src")));
-        return Files.readString(path);
+    private static Map<String, Object> getData(String filePath) throws Exception {
+        Path fullPath = getFullPath(filePath);
+
+        if (!Files.exists(fullPath)) {
+            throw new Exception("File '" + fullPath + "' does not exist");
+        }
+
+        String content = Files.readString(fullPath);
+        String dataFormat = getDataFormat(filePath);
+        return Parser.parser(content, dataFormat);
     }
 
-    public static String getFType(String filepath) {
-        return filepath.substring(filepath.indexOf(".") + 1);
+    private static String getDataFormat(String format) {
+        return format;
     }
-
+    private static Path getFullPath(String fileName) {
+        return Paths.get(fileName)
+                .toAbsolutePath().normalize();
+    }
 }

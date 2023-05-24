@@ -1,70 +1,48 @@
 package hexlet.code;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
 
-import java.io.IOException;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class AppTest {
-
-    private final String path1 = "src/test/resources/fixtures/file1.json";
-    private final String path2 = "src/test/resources/fixtures/file2.json";
-    private final String path3 = "src/test/resources/fixtures/file1.yml";
-    private final String path4 = "src/test/resources/fixtures/file2.yml";
-
-    private final Path pathStylish =
-            Paths.get("src/test/resources/expected/testStylish").toAbsolutePath().normalize();
-    private final Path pathPlain =
-            Paths.get("src/test/resources/expected/testPlain").toAbsolutePath().normalize();
-    private final Path pathJson =
-            Paths.get("src/test/resources/expected/testJson").toAbsolutePath().normalize();
-
-    public AppTest() throws IOException {
+    private static String resultJson;
+    private static String resultPlain;
+    private static String resultStylish;
+    @BeforeAll
+    public static void beforeAll() throws Exception {
+        resultJson = readFixture("testJson");
+        resultPlain = readFixture("testPlain");
+        resultStylish = readFixture("testStylish");
+    }
+    private static Path getFixturePath(String fileName) {
+        return Paths.get("src", "test", "resources", "fixtures", fileName)
+                .toAbsolutePath().normalize();
     }
 
-    @Test
-    public void test1() throws Exception {
-        String expected = Files.readString(pathStylish);
-        assertEquals(expected, Differ.generate(path1, path2));
+    private static String readFixture(String fileName) throws Exception {
+        Path filePath = getFixturePath(fileName);
+        return Files.readString(filePath).trim();
     }
-
-    @Test
-    public void testStylish1() throws Exception {
-        String expected = Files.readString(pathStylish);
-        assertEquals(expected, Differ.generate(path1, path2, "stylish"));
-    }
-
-    @Test
-    public void testStylish2() throws Exception {
-        String expected = Files.readString(pathStylish);
-        assertEquals(expected, Differ.generate(path3, path4, "stylish"));
-    }
-
-    @Test
-    public void testPlain1() throws Exception {
-        String expected = Files.readString(pathPlain);
-        assertEquals(expected, Differ.generate(path1, path2, "plain"));
-    }
-
-    @Test
-    public void testPlain2() throws Exception {
-        String expected = Files.readString(pathPlain);
-        assertEquals(expected, Differ.generate(path3, path4, "plain"));
-    }
-
-    @Test
-    public void testJson1() throws Exception {
-        String expected = Files.readString(pathJson);
-        assertEquals(expected, Differ.generate(path1, path2, "json"));
-    }
-
-    @Test
-    public void testJson2() throws Exception {
-        String expected = Files.readString(pathJson);
-        assertEquals(expected, Differ.generate(path3, path4, "json"));
+    @ParameterizedTest
+    @ValueSource(strings = {"json", "yml"})
+    public void generateTest(String format) throws Exception {
+        String filePath1 = getFixturePath("file1." + format).toString();
+        String filePath2 = getFixturePath("file2." + format).toString();
+        assertThat(Differ.generate(filePath1, filePath2))
+                .isEqualTo(resultStylish);
+        assertThat(Differ.generate(filePath1, filePath2, "stylish"))
+                .isEqualTo(resultStylish);
+        assertThat(Differ.generate(filePath1, filePath2, "plain"))
+                .isEqualTo(resultPlain);
+        assertThat(Differ.generate(filePath1, filePath2, "json"))
+                .isEqualTo(resultJson);
     }
 }

@@ -39,7 +39,7 @@ public class Plain {
         } else if (data instanceof String) {
             return "'" + data + "'";
         } else if (data == null) {
-            return null;
+            return "null";
         }
         return data.toString();
     }
