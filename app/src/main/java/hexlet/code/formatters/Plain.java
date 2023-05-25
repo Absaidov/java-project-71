@@ -24,12 +24,11 @@ public class Plain {
                                 .append(complexValue(diffs.get("newValue")))
                                 .append("\n");
 
-                default -> result.append("");
+                case "unchanged" -> result.append("");
+                default -> throw new RuntimeException("Unknown status: " + diffs.get("status").toString());
             }
-
         }
         return result.toString().trim();
-
     }
 
     public static String complexValue(Object data) {
