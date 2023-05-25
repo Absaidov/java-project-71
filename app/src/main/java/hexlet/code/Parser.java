@@ -9,12 +9,19 @@ import java.util.TreeMap;
 
 
 public class Parser {
-    public static TreeMap<String, Object> parser(String data, String format) throws IOException {
-        ObjectMapper objectmapper = chooseFormat(format);
-        return objectmapper.readValue(data, new TypeReference<>() { });
-    }
-
-    private static ObjectMapper chooseFormat(String format) {
-        return "json".equals(format) ? new ObjectMapper() : new ObjectMapper(new YAMLFactory());
+    public static TreeMap<String, Object> parser(String data, String format) throws RuntimeException, IOException {
+        switch (format) {
+            case "json" -> {
+                ObjectMapper objectMapper = new ObjectMapper();
+                return objectMapper.readValue(data, new TypeReference<>() {
+                });
+            }
+            case "yml" -> {
+                ObjectMapper objectMapperYml = new ObjectMapper(new YAMLFactory());
+                return objectMapperYml.readValue(data, new TypeReference<>() {
+                });
+            }
+            default -> throw new RuntimeException("Unknown format " + format);
+        }
     }
 }

@@ -11,7 +11,6 @@ public class Differ {
         Map<String, Object> map1 = getData(pathfile1);
         Map<String, Object> map2 = getData(pathfile2);
 
-
         List<Map<String, Object>> result = GenDifference.differ(map1, map2);
 
         return Formatter.formatStyle(result, format);
@@ -33,8 +32,10 @@ public class Differ {
     }
 
     private static String getDataFormat(String format) {
-        return format;
+        String[] formatArray = format.split("\\.");
+        return formatArray[1];
     }
+
     private static Path getFullPath(String fileName) {
         return Paths.get(fileName)
                 .toAbsolutePath().normalize();
