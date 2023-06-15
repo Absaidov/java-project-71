@@ -1,11 +1,11 @@
-# *Difference Calculator*
-### This application reveals the difference between 2 `json` and `yaml` files.
-### To call the "help" command, use `./build/install/app/bin/app -h`
+# *Вычислитель отличий*
+### Это приложение показывает разницу между двумя файлами `json` и `yaml`.
+### Чтобы вызвать команду «помощь», используйте `./build/install/app/bin/app -h`.
 
-### In this application, 3 formatters are implemented, for output to the terminal, the name of these formatters is `stylish`, which is installed by default. There is also a `plain` formatter
-### and `json` formatter. Use the `-f` flag to use the formatter.
+### В данном приложении реализовано 3 форматтера, для вывода в терминал имя этих форматтеров `stylish`, который установлен по умолчанию. Существует также «обычный» форматтер
+### и средство форматирования `json`. Используйте флаг `-f`, чтобы использовать средство форматирования.
 
-### For example, `./build/install/app/bin/app -f json filepath1.json filepath2.json`, this formatter will output the difference in json file format.
+### Например, `./build/install/app/bin/app -f json filepath1.json filepath2.json` этот модуль форматирования выведет разницу в формате файла json.
 
 
 [![Actions Status](https://github.com/Absaidov/java-project-71/workflows/hexlet-check/badge.svg)](https://github.com/Absaidov/java-project-71/actions)
